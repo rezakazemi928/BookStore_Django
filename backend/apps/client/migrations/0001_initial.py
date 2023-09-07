@@ -2,7 +2,7 @@
 
 import datetime
 
-import client.validators
+import utils.validators
 from django.db import migrations, models
 
 
@@ -37,7 +37,7 @@ class Migration(migrations.Migration):
                     models.CharField(
                         blank=True,
                         max_length=17,
-                        validators=[client.validators.mobile_validator],
+                        validators=[utils.validators.mobile_validator],
                     ),
                 ),
                 (

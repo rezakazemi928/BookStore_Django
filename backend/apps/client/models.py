@@ -1,8 +1,8 @@
-from datetime import datetime, timedelta
+from datetime import timedelta
 
 from django.db import models
-
-from .validators import mobile_validator
+from django.utils import timezone
+from utils.validators import mobile_validator
 
 # * Create your models here.
 
@@ -14,8 +14,8 @@ class CLientModel(models.Model):
     email = models.EmailField(max_length=255, blank=True, null=True, unique=True)
     mobile = models.CharField(validators=[mobile_validator()], max_length=17, blank=True)
     registration_date = models.DateTimeField(
-        blank=False, null=False, default=datetime.utcnow()
+        blank=False, null=False, default=timezone.now
     )
     expires_at = models.DateTimeField(
-        blank=False, null=False, default=datetime.utcnow() + timedelta(days=365)
+        blank=False, null=False, default=timezone.now() + timedelta(days=365)
     )
